@@ -44,4 +44,3 @@ validate :: [Int] -> Bool
 validate list = x < 6 && y < 6
     where x = list!!0  
           y = list!!2
-    
