@@ -39,5 +39,5 @@ spec = do
     it "should borrow time from the tenth minute if the minute is at zero" $ do
       countdown "10:00" `shouldBe` "09:59"
       countdown "40:00" `shouldBe` "39:59"
-    it "should should stop the timer after the last second" $
-      countdown "00:01" `shouldBe` "stop"
+    it "should should stop the timer when the time is up" $
+      countdown "00:00" `shouldBe` "00:00"
