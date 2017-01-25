@@ -6,7 +6,7 @@ Simple CLI timer written in Haskell.
 
 ```sh
 $ brew install wget
-$ wget https://github.com/berto/terminal-countdown-timer/bin/timer
+$ wget https://github.com/berto/terminal-countdown-timer/raw/master/bin/timer 
 $ chmod u+x timer
 $ mv timer /usr/local/bin
 ```
