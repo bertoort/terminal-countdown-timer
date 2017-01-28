@@ -41,3 +41,7 @@ spec = do
       countdown "40:00" `shouldBe` "39:59"
     it "should should stop the timer when the time is up" $
       countdown "00:00" `shouldBe` "00:00"
+    it "should give the total of remaining seconds" $ do
+      getSeconds "00:30" `shouldBe` 30
+      getSeconds "02:58" `shouldBe` 178
+      getSeconds "13:03" `shouldBe` 783

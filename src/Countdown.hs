@@ -1,5 +1,6 @@
 module Countdown
     ( countdown
+    , getSeconds
     ) where
 
 import Helper 
@@ -7,6 +8,11 @@ import Helper
 countdown :: [Char] -> [Char]
 countdown time = display $ nextTick (format nums) 3
     where nums = take 2 time ++ drop 3 time
+
+getSeconds :: [Char] -> Int 
+getSeconds time = minutes + seconds 
+    where minutes = 60 * (read $ take 2 time)
+          seconds = read $ drop 3 time
 
 nextTick :: [Int] -> Int -> [Int]
 nextTick nums i

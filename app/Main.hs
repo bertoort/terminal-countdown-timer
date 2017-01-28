@@ -2,7 +2,9 @@ module Main where
 
 import Timer
 import Countdown
+import ProgressBar
 import Options.Applicative
+import Control.Monad (unless)
 import Control.Concurrent(threadDelay)
 
 data ArgParser = ArgParser
@@ -18,11 +20,7 @@ initiate _ = return ()
 
 start :: [Char] -> IO()
 start "error" = putStrLn "Invalid Input"
-start "00:00" = putStrLn "Stop"
-start time = do
-    putStrLn time
-    threadDelay 1000000
-    start $ countdown time
+start time = progressBar time
 
 main :: IO ()
 main = execParser opts >>= initiate
