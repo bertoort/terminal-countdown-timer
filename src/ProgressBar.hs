@@ -6,6 +6,9 @@ import Control.Monad
 import Control.Concurrent
 import System.IO
 import Text.Printf
+import Data.Maybe 
+import Data.Map 
+import qualified Data.Map as Map
 
 putProgress :: String -> IO ()
 putProgress s = hPutStr stderr $ "\r\ESC[K" ++ s
@@ -19,14 +22,14 @@ drawProgressBar width progress =
 drawPercentage :: Int -> String
 drawPercentage progress = printf "%3d%%" progress
 
-drawTime :: String -> String
-drawTime time = printf "⏰  " ++ time 
+drawTime :: Int -> String -> String
+drawTime secs time = printf $ clock secs ++ "  " ++ time
 
 tick :: String -> Int -> Int -> IO ()
 tick time secs total
   | secs /= total = do
       let progress = ((100 * secs) `div` total) 
-      putProgress $ drawTime time ++ drawProgressBar 50 progress ++ " " ++ drawPercentage progress
+      putProgress $ drawTime secs time ++ drawProgressBar 50 progress ++ " " ++ drawPercentage progress
       threadDelay 1000000
       tick (countdown time) (secs + 1) total 
   | otherwise = do
@@ -37,3 +40,9 @@ tick time secs total
 progressBar :: String -> IO ()
 progressBar time = do
   tick time 0 $ getSeconds time 
+
+clock :: Int -> [Char] 
+clock n = do
+    let e = Map.fromList [(0, "🕛"),(1, "🕐"), (2, "🕑"), (3, "🕒"), (4, "🕓"), (5, "🕔"),
+                          (6, "🕕"), (7, "🕖"), (8, "🕗"), (9, "🕘"), (10, "🕙"), (11, "🕚")]
+    fromJust $ Map.lookup (n `mod` 12) e
