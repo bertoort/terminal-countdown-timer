@@ -21,7 +21,7 @@ timer 10 minutes # no need for words
 timer 89 # type 129 instead
 ```
 
-IOS Download
+## IOS Download
 
 ```sh
 $ brew install wget
