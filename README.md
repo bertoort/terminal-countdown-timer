@@ -21,6 +21,15 @@ timer 10 minutes # no need for words
 timer 89 # type 129 instead
 ```
 
+IOS Download
+
+```sh
+$ brew install wget
+$ wget https://github.com/berto/terminal-countdown-timer/raw/master/bin/timer 
+$ chmod u+x timer
+$ mv timer /usr/local/bin
+```
+
 ## Running / Testing
 
 First, install stack. `curl -sSL https://get.haskellstack.org/ | sh` will work on most Unix systems, otherwise checkout https://docs.haskellstack.org/en/stable/README/ . If you haven't run other Haskell projects on your system, the first time you try to build the project it may say you have to run `stack setup`; do so.
