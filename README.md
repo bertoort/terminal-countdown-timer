@@ -2,13 +2,23 @@
 
 Simple CLI timer written in Haskell.
 
-## IOS Download
+![demo](./demo.gif)
+
+## Usage
+
+Type `timer` and the time that you want (less than an hour)
 
 ```sh
-$ brew install wget
-$ wget https://github.com/berto/terminal-countdown-timer/raw/master/bin/timer 
-$ chmod u+x timer
-$ mv timer /usr/local/bin
+# Yes 👍
+timer 40 # starts 00:40
+timer 220 # starts 02:20
+timer 1230 # starts 12:30
+
+# No 👎
+timer # time is required
+timer 1:00 # no need for colons
+timer 10 minutes # no need for words
+timer 89 # type 129 instead
 ```
 
 ## Running / Testing
